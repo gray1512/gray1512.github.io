@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* ===== Theme Variables ===== */
+:root {
+  background: 
+  #0e0e10 
+  url('@/app/public/images/bg.jpg') center/cover no-repeat;
+  
+  --color-bg: #0e0e10;          /* deep black base */
+  --color-card: rgba(255, 255, 255, 0.02); /* almost transparent card */
+  --color-border: rgba(255, 255, 255, 0.08); /* soft thin border */
+
+  --color-text: #d4d4d8;          /* ~83% white, more comfortable */
+  --color-text-muted: #9ca3af;    /* ~60% white/gray */
+
+  --color-accent: #e5e5e5;      /* near-white accent */
+  --color-accent-light: #ffffff;/* pure white hover */
+
+  --color-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* subtle floating shadow */
+  --radius-xl2: 14px;
+
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 15px;
+  --font-lg: 18px;
+  --font-xl: 22px;
+  --font-2xl: 28px;
+  
+  --track-tight: -0.01em;
+  --track-normal: 0;
+  --track-wide: 0.06em;
+  --track-widest: 0.1em;
+}
+
+/* ===== Base ===== */
+html, body {
+  background: var(--background);
+  color: var(--color-text);
+  line-height: 1.4;
+  letter-spacing: var(--track-normal);
+}
