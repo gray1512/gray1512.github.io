@@ -1,18 +1,11 @@
 import {
     siKotlin, siAndroid, siReact,
-    siDotnet, siC, siCplusplus,
-    siGithubactions, siDocker,
+    siDotnet,
     siGmail,
     siGithub,
-    siPython,
-    siJavascript,
     siTypescript,
     siGooglecloud,
-    siGraphql,
     siHtml5,
-    siMongodb,
-    siPostgresql,
-    siSqlite,
     siCss
 } from "simple-icons/icons";
 import JavaSVG from "@/app/public/icons/java.svg";
@@ -21,8 +14,6 @@ import XamarinSVG from "@/app/public/icons/xamarin.svg";
 import LinkedInSVG from "@/app/public/icons/linkedin.svg";
 import AzureSVG from "@/app/public/icons/azure.svg";
 import AWSSVG from "@/app/public/icons/aws.svg";
-import AzureDevOpsSVG from "@/app/public/icons/azure-devops.svg";
-import CosmosDBSVG from "@/app/public/icons/cosmosdb.svg";
 
 
 export type Category = {
@@ -34,10 +25,7 @@ export type SubItem =
     | { label: string; local: string; href?: string }; // local SVG path
 
 export const hasPath = (i: SubItem): i is { label: string; path: string } =>
-    (i as any).path !== undefined;
-
-export const hasCdn = (i: SubItem): i is { label: string; local: string } =>
-    (i as any).cdn !== undefined;
+    (i as { label: string; path: string }).path !== undefined;
 
 export const NAME = "Gray Pham" as const;
 export const TITLE = "Senior Software Engineer" as const;

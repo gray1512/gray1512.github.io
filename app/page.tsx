@@ -11,13 +11,13 @@ export default function Page() {
 
   // close when clicking outside
   useEffect(() => {
-    const mouseDownHandler = (e: MouseEvent) => {
+    const mouseDownHandler = () => {
       setActiveIndex(null);
     };
     document.addEventListener("mousedown", mouseDownHandler);
     return () => document.removeEventListener("mousedown", mouseDownHandler);
   }, []);
-  
+
   return (
     <main className="container-narrow min-h-screen grid place-items-center">
       <motion.section

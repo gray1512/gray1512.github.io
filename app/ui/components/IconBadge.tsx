@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import { hasPath, SubItem } from "@/app/lib/definitions";
 import { AnimatePresence, motion } from "framer-motion";

@@ -1,5 +1,4 @@
 import { hasPath, SubItem } from "@/app/lib/definitions";
-import { PropsWithChildren } from "react";
 import Image from "next/image";
 
 export default function IconButton({info, newTab}: { info: SubItem, newTab?: boolean }) {
