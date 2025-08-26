@@ -4,7 +4,7 @@
 :root {
   background: 
   #0e0e10 
-  url('@/app/public/images/bg.jpg') center/cover no-repeat;
+  url('./public/images/bg.jpg') center/cover no-repeat;
   
   --color-bg: #0e0e10;          /* deep black base */
   --color-card: rgba(255, 255, 255, 0.02); /* almost transparent card */
@@ -38,4 +38,5 @@ html, body {
   color: var(--color-text);
   line-height: 1.4;
   letter-spacing: var(--track-normal);
+  overscroll-behavior: none; /* disables “rubber band” overscroll */
 }
