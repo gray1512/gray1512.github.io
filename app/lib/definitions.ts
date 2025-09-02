@@ -1,80 +1,66 @@
-import {
-    siKotlin, siAndroid, siReact,
-    siDotnet,
-    siGmail,
-    siGithub,
-    siTypescript,
-    siGooglecloud,
-    siHtml5,
-    siCss
-} from "simple-icons/icons";
-import JavaSVG from "@/app/public/icons/java.svg";
-import CSharpSVG from "@/app/public/icons/csharp.svg";
-import XamarinSVG from "@/app/public/icons/xamarin.svg";
-import LinkedInSVG from "@/app/public/icons/linkedin.svg";
-import AzureSVG from "@/app/public/icons/azure.svg";
-import AWSSVG from "@/app/public/icons/aws.svg";
+import { Braces, Github, Globe, Linkedin, LucideProps, Mail, Server, Smartphone } from "lucide-react";
+import * as react from 'react';
 
-
-export type Category = {
-    label: string;
-    items: SubItem[];
-};
-export type SubItem =
-    | { label: string; path: string; href?: string } // inline SVG
-    | { label: string; local: string; href?: string }; // local SVG path
-
-export const hasPath = (i: SubItem): i is { label: string; path: string } =>
-    (i as { label: string; path: string }).path !== undefined;
+interface SkillCategory {
+  category: string;
+  icon: react.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
+  skills: string[];
+  color: string;
+}
 
 export const NAME = "Gray Pham" as const;
 export const TITLE = "Senior Software Engineer" as const;
 export const LOCATION = "Canada" as const;
+export const INTRO = "Hey, I like building thoughtful products and keeping things straightforward." as const;
 
-const EMAIL = "mailto:graypham98@gmail.com" as const;
-const GITHUB = "https://github.com/gray1512" as const;
+export const EMAIL = "graypham98@gmail.com" as const;
+export const GITHUB = "https://github.com/gray1512" as const;
 const LINKEDIN = "https://linkedin.com/in/grayp1512" as const;
 
-export const SKILLS: Category[] = [
+export const SKILLS: SkillCategory[] = [
   {
-    label: "Languages",
-    items: [
-      { label: "C#", local: CSharpSVG },
-      { label: "Java", local: JavaSVG },
-      { label: "Kotlin", path: siKotlin.path },
-      { label: "TypeScript", path: siTypescript.path },
-    ],
+    category: "Languages",
+    icon: Braces,
+    skills: ["C#", "Java", "Kotlin", "TypeScript", "JavaScript"],
+    color: "text-muted-foreground"
   },
   {
-    label: "Web",
-    items: [
-      { label: ".NET", path: siDotnet.path },
-      { label: "React", path: siReact.path },
-      { label: "HTML5", path: siHtml5.path },
-      { label: "CSS3", path: siCss.path },
-    ],
+    category: "Web",
+    icon: Globe,
+    skills: [".NET", "React", "Node.js", "Next.js", "HTML5", "CSS3"],
+    color: "text-muted-foreground"
   },
   {
-    label: "Cloud",
-    items: [
-      { label: "Azure", local: AzureSVG },
-      { label: "AWS", local: AWSSVG },
-      { label: "GCP", path: siGooglecloud.path },
-    ],
+    category: "Platforms",
+    icon: Server,
+    skills: ["AWS", "Azure", "GCP"],
+    color: "text-muted-foreground"
   },
   {
-    label: "Mobile",
-    items: [
-      { label: "Android", path: siAndroid.path },
-      { label: "React Native", path: siReact.path },
-      { label: "Xamarin", local: XamarinSVG },
-      { label: ".NET MAUI", path: siDotnet.path }, // fallback if no Maui icon
-    ],
+    category: "Mobile",
+    icon: Smartphone,
+    skills: ["Android", "React Native", ".NET MAUI"],
+    color: "text-muted-foreground"
   }
 ];
 
-export const CONTACTS: SubItem[] = [
-    { label: "Email", path: siGmail.path, href: EMAIL },
-    { label: "Github", path: siGithub.path, href: GITHUB },
-    { label: "LinkedIn", local: LinkedInSVG, href: LINKEDIN },
+export const CONTACTS = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: `${EMAIL}`,
+    href: `mailto:${EMAIL}`
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: `${GITHUB.replace("https://", "")}`,
+    href: `${GITHUB}`
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: `${LINKEDIN.replace("https://", "")}`,
+    href: `${LINKEDIN}`
+  }
 ];

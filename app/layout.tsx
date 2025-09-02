@@ -11,7 +11,6 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Gray Pham - Software Engineer",
-  description: "Gray Pham's Profile",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
