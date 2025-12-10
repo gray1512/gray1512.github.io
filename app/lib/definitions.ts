@@ -1,11 +1,19 @@
-import { Braces, Github, Globe, Linkedin, LucideProps, Mail, Server, Smartphone } from "lucide-react";
+import { Braces, Cloud, Database, Github, Globe, Linkedin, LucideProps, Mail, Server, Smartphone } from "lucide-react";
 import * as react from 'react';
 
-interface SkillCategory {
+interface Skill {
   category: string;
   icon: react.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & react.RefAttributes<SVGSVGElement>>;
   skills: string[];
   color: string;
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  tech: string[] | null;
+  demo: string | null | undefined;
+  github: string | null | undefined;
 }
 
 export const NAME = "Gray Pham" as const;
@@ -15,52 +23,71 @@ export const INTRO = "Hey, I like building thoughtful products and keeping thing
 
 export const EMAIL = "graypham98@gmail.com" as const;
 export const GITHUB = "https://github.com/gray1512" as const;
-const LINKEDIN = "https://linkedin.com/in/grayp1512" as const;
+export const LINKEDIN = "https://linkedin.com/in/grayp1512" as const;
 
-export const SKILLS: SkillCategory[] = [
+export const SKILLS: Skill[] = [
   {
-    category: "Languages",
-    icon: Braces,
-    skills: ["C#", "Java", "Kotlin", "TypeScript", "JavaScript"],
-    color: "text-muted-foreground"
-  },
-  {
-    category: "Web",
-    icon: Globe,
-    skills: [".NET", "React", "Node.js", "Next.js", "HTML5", "CSS3"],
-    color: "text-muted-foreground"
-  },
-  {
-    category: "Platforms",
+    category: "Backend & APIs",
     icon: Server,
-    skills: ["AWS", "Azure", "GCP"],
+    skills: [
+      "C#", ".NET",
+      "TypeScript", "JavaScript", "Node.js", "Express",
+      "Java", 
+      "Python", "Flask"
+    ],
     color: "text-muted-foreground"
   },
   {
-    category: "Mobile",
-    icon: Smartphone,
-    skills: ["Android", "React Native", ".NET MAUI"],
+    category: "Frontend & Web",
+    icon: Globe,
+    skills: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn/ui",
+      "Material UI",
+    ],
+    color: "text-muted-foreground"
+  },
+  {
+    category: "Cloud & DevOps",
+    icon: Cloud,
+    skills: [
+      "AWS",
+      "Azure",
+      "GCP",
+      "Docker",
+      "CI/CD",
+    ],
+    color: "text-muted-foreground"
+  },
+  {
+    category: "Data & Infrastructure",
+    icon: Database,
+    skills: [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Azure Blob Storage",
+      "AWS S3"
+    ],
     color: "text-muted-foreground"
   }
 ];
 
-export const CONTACTS = [
+export const PROJECTS: Project[] = [
   {
-    icon: Mail,
-    label: "Email",
-    value: `${EMAIL}`,
-    href: `mailto:${EMAIL}`
+    title: "Season Watch",
+    description: "A platform that scrapes and classifies seasonal signals from social media, transforming them into geolocated events visualized on an interactive map.",
+    tech: [
+      "Next.js",
+      "Express.js",
+      "TypeScript",
+      "Python",
+      "PostgreSQL",
+      "Docker"
+    ],
+    demo: "https://season-watch.vercel.app/",
+    github: null
   },
-  {
-    icon: Github,
-    label: "GitHub",
-    value: `${GITHUB.replace("https://", "")}`,
-    href: `${GITHUB}`
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: `${LINKEDIN.replace("https://", "")}`,
-    href: `${LINKEDIN}`
-  }
 ];

@@ -8,7 +8,14 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}", // if you use /src
   ],
-  theme: { extend: {} },
+  theme: { extend: {
+    colors: {
+      primary: {
+        DEFAULT: "#353744",
+        foreground: "#ffffff"
+      },
+    }
+  } },
   plugins: [require("tailwindcss-animate")],
 };
 

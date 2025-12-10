@@ -1,94 +1,98 @@
+"use client";
+
+import { NavBar } from "./ui/NavBar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Mail, Github, ExternalLink } from "lucide-react";
+import { Mail, Github, ExternalLink, Linkedin } from "lucide-react";
+
 import { SkillsStaggered } from "./ui/SkillsStaggered";
-import { CONTACTS, EMAIL, GITHUB, INTRO, LOCATION, NAME, TITLE } from "./lib/definitions";
+import {
+  EMAIL,
+  GITHUB,
+  INTRO,
+  LINKEDIN,
+  LOCATION,
+  NAME,
+  PROJECTS,
+  TITLE
+} from "./lib/definitions";
+import { ProjectCard } from "./ui/ProjectCard";
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto px-6 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-10">
-            <h1 className="mb-2 tracking-tight">{NAME}</h1>
-            <p className="text-foreground/90 mb-4">
-              {TITLE} @ {LOCATION}
-            </p>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              {INTRO}
-            </p>
-        </div>
+      <NavBar />
 
-        {/* Skills Section */}
-        <Card className="mb-8 shadow-sm">
-          <CardContent className="p-8">
-            <h2 className="mb-4">Skills & Technologies</h2>
-            <SkillsStaggered />
-          </CardContent>
-        </Card>
+      <div className="max-w-6xl mx-auto px-6 py-16">
 
-        {/* Contact Section */}
-        <Card className="shadow-sm">
-          <CardContent className="p-8">
-            <h2 className="mb-4">Get In Touch</h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              I&apos;m always interested in new opportunities and collaborations.<br/>Feel free to reach out!
-            </p>
+        {/* ----------------------------- HERO ----------------------------- */}
+        <section className="mb-30 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+            {NAME}
+          </h1>
 
-            <div className="space-y-4">
-              {CONTACTS.map((contact) => {
-                const Icon = contact.icon;
-                return (
-                  <div key={contact.label} className="flex items-center justify-between group py-1">
-                    <div className="flex items-center gap-3 min-w-0 flex-1">
-                      <Icon className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                      <div className="min-w-0">
-                        <p className="text-sm text-muted-foreground">{contact.label}</p>
-                        <p className="font-medium truncate">{contact.value}</p>
-                      </div>
-                    </div>
-                    <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity min-h-9 min-w-9 flex-shrink-0"
-                      asChild
-                    >
-                      <a href={contact.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    </Button>
-                  </div>
-                );
-              })}
-            </div>
+          <p className="text-xl text-muted-foreground font-medium mb-6">{TITLE} @ {LOCATION}</p>
 
-            <Separator className="my-6" />
- 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button className="w-full sm:flex-1 h-11" asChild>
-                
-                <a href={`mailto:${EMAIL}`} className="flex items-center justify-center">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Send Email
-                </a>
-              </Button>
-              <Button variant="outline" className="w-full sm:flex-1 h-11" asChild>
-                <a href={`${GITHUB}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                  <Github className="mr-2 h-4 w-4" />
-                  View Projects
-                </a>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Footer */}
-        <div className="mt-8 text-center">
-          <p className="text-xs text-muted-foreground">
-            © 2025 Built with React & Next.js.
+          <p className="max-w-2xl mx-auto leading-relaxed">
+            {INTRO}
           </p>
-        </div>
+        </section>
+
+        {/* ----------------------------- SKILLS ----------------------------- */}
+        <section id="skills" className="mb-20 scroll-mt-24">
+          <h2 className="text-xl font-semibold mb-6">Skills & Technologies</h2>
+          
+          <SkillsStaggered />
+        </section>
+
+        {/* ----------------------------- PROJECTS ----------------------------- */}
+        {
+        (PROJECTS.length > 0) &&
+          <section id="projects" className="mb-30 scroll-mt-24">
+            <h2 className="text-xl font-semibold mb-6">Projects</h2>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {
+                PROJECTS.map((project, projecIndex) =>
+                  <ProjectCard key={projecIndex} project={project} />
+                )
+              }
+
+            </div>
+          </section>
+        }
+
+
+        {/* ----------------------------- CONTACT ----------------------------- */}
+        <section id="contact" className="text-center mb-20 scroll-mt-24">
+          <h2 className="text-xl font-semibold mb-4">Let's Connect</h2>
+
+          <p className="text-muted-foreground max-w-xl mx-auto mb-6 leading-relaxed">
+            I'm always interested in new opportunities and collaborations.<br />Feel free to reach out!
+          </p>
+
+          <Button className="h-11 px-5 rounded-full" asChild>
+            <a href={`mailto:${EMAIL}`}>Send an Email</a>
+          </Button>
+
+          <div className="flex justify-center gap-2 mt-6">
+            <Button variant="ghost" className="rounded-full">
+              <a href={GITHUB} target="_blank">
+                <Github className="h-10 w-10" />
+              </a>
+            </Button>
+            <Button variant="ghost" className="rounded-full">
+              <a href={LINKEDIN} target="_blank">
+                <Linkedin className="h-10 w-10" />
+              </a>
+            </Button>
+          </div>
+        </section>
+
+        {/* ----------------------------- FOOTER ----------------------------- */}
+        <footer className="text-center text-xs text-muted-foreground py-2">
+          © 2025 {NAME}. All rights reserved.
+        </footer>
       </div>
     </main>
   );
